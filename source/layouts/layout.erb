@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title || "Andy Yan" %></title>
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :all %>
+  </head>
+  <body class="<%= page_classes %>">
+    <div id="loader-wrapper" class="hidden">
+        <div id="loader" class="loader">
+          <div class="loader__bar"></div>
+          <div class="loader__bar"></div>
+          <div class="loader__bar"></div>
+          <div class="loader__bar"></div>
+          <div class="loader__bar"></div>
+          <div class="loader__ball"></div>
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <nav>
+      <a href="/">ME</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="blog.html">THOUGHTS</a>
+      <div class="right social-icons">
+        <a>yan.andy4@gmail.com</a>
+        <a href="https://github.com/AndyLc"><%= image_tag "social-icons/SVG/Github-black.svg" %></a>
+        <a href="https://www.linkedin.com/in/andy-yan-814796121"><%= image_tag "social-icons/SVG/LinkedIn-black.svg" %></a>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
