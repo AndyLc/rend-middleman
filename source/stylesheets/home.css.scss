@@ -39,7 +39,7 @@ div.home {
       opacity: 1;
     }
     div.brain {
-      padding-top: 100px;
+      //padding-top: 100px;
       strong {
         color: #673AB7;
       }
@@ -49,7 +49,7 @@ div.home {
       }
     }
     div.heart {
-      padding-top: 150px;
+      //padding-top: 150px;
       strong {
         color: #E91E63;
       }
@@ -63,8 +63,8 @@ div.home {
         color: #00BCD4;
       }
       ul li {
-        border-bottom: 1px solid #00BCD4;
         display:inline-block;
+        border-bottom: 1px solid #00BCD4;
       }
     }
   }

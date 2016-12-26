@@ -1,0 +1,57 @@
+---
+pageable: true
+per_page: 12
+---
+  <h1 style="margin-bottom: 5px; padding-top: 50px; margin-top: 0px;">Articles tagged '<%= tagname %>'
+<% case page_type
+   when 'day' %>
+<%= Date.new(year, month, day).strftime('%b %e %Y') %>
+<% when 'month' %>
+<%= Date.new(year, month, 1).strftime('%b %Y') %>
+<% when 'year' %>
+<%= year %>
+<% end %>
+</h1>
+<div class="blog-index" style="padding-top: 0px;">
+<div class="blog-list">
+    <% page_articles.each_with_index do |article, i| %>
+    <div class="blog-item">
+        <h2 class="header">
+            <a href="<%= article.url %>"><%= article.title %></a>
+        </h2>
+        <time><%= article.date.strftime('%b %e %Y') %></time>
+        <p><%= article.summary %></p>
+    </div>
+    <% end %>
+</div>
+<div class="blog-nav" style="top: 110px;">
+    <h2>Tags</h2>
+    <ol>
+        <% blog.tags.each do |tag, articles| %>
+        <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
+        <% end %>
+    </ol>
+    <h2>By Year</h2>
+    <ol>
+        <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
+        <li><%= link_to "#{year} (#{articles.size})", blog_year_path(year) %></li>
+        <% end %>
+    </ol>
+</div>
+</div>
+<% if paginate && num_pages > 1 %>
+<p>Page
+<%= page_number %>
+of
+<%= num_pages %></p>
+
+<% if prev_page %>
+<p><%= link_to 'Previous page', prev_page %></p>
+<% end %>
+<% end %>
+
+<% if paginate %>
+<% if next_page %>
+<p><%= link_to 'Next page', next_page %></p>
+<% end %>
+<% end %>

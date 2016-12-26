@@ -10,6 +10,7 @@
 
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
     <%= stylesheet_link_tag :site %>
     <%= javascript_include_tag :all %>
@@ -38,7 +39,30 @@
       </div>
     </nav>
     <div class="container">
-      <%= yield %>
+      <div class="blog-content">
+        <h3><%= current_article.title %></h3>
+        <%= yield %>
+      </div>
+      <aside>
+        <div class="blog-nav" style="top: 60px;">
+                <h2>Tags</h2>
+                <ol>
+                  <% blog.tags.each do |tag, articles| %>
+                    <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
+                  <% end %>
+                </ol>
+
+                <h2>By Year</h2>
+                <ol>
+                  <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
+                    <li><%= link_to "#{year} (#{articles.size})", blog_year_path(year) %></li>
+                  <% end %>
+                </ol>
+        </div>
+      </aside>
+      <a href="http://example.com/foo.html#disqus_thread">Comments</a>
+      <%= disqus %>
+      <%= disqus_count %>
     </div>
   </body>
 </html>
