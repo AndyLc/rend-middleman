@@ -28,12 +28,54 @@
   }
 }
 
+@keyframes fancyEntrance {
+  0% {
+    width: 0px;
+    height: 0px
+  }
+  100% {
+    width: 700px;
+    height: 700px;
+  }
+}
+
 div.nancy-html {
   .fadeIn {
     opacity: 0;
     animation: fadeIn ease-in-out 0.8s;
     animation-delay: 1.5s;
     animation-fill-mode: forwards;
+  }
+  div.about {
+    z-index: 99;
+      width: 0px;
+      height: 0px;
+      border-radius: 1000px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #F5F5F5;
+      &.expanded {
+        animation: fancyEntrance ease-in-out 1s;
+        animation-fill-mode: forwards;
+        div.about-content {
+          animation: fadeIn ease-in-out 1s;
+          animation-delay: 0.7s;
+          animation-fill-mode: forwards;
+        }
+      }
+      div.about-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        opacity: 0;
+        font-family: pierSans;
+        color: #90A4AE;
+        text-align: left;
+      }
   }
   div.nancy-container {
     .fadeIn {
@@ -134,11 +176,16 @@ div.nancy-html {
         }
       }
       div.comingsoon {
+        z-index: 100;
         font-family: simplifica;
         font-size: 12px;
         letter-spacing: 10px;
         margin-top: 5px;
         color: black;
+        position:absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }
