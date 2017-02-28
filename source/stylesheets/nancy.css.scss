@@ -1,0 +1,145 @@
+@font-face {
+    font-family: pierSans;
+    src: url(/fonts/pier-regular.otf);
+}
+
+@font-face {
+  font-family: simplifica;
+  src: url(/fonts/simplifica.ttf);
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+div.nancy-html {
+  .fadeIn {
+    opacity: 0;
+    animation: fadeIn ease-in-out 0.8s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+  }
+  div.nancy-container {
+    .fadeIn {
+      opacity: 0;
+      animation: fadeIn ease-in-out 0.8s;
+      animation-delay: 1.5s;
+      animation-fill-mode: forwards;
+    }
+    div.intro {
+      z-index: 10000;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      background-color: #F5F5F5;
+      div.intro-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #455A64;
+        h2 {
+          height: 105px;
+          font-size: 140px;
+          letter-spacing: 43px;
+          font-family: pierSans;
+          padding-top: 47px;
+          margin-left: 26px;
+          .hide {
+            opacity: 0;
+          }
+          div.elines {
+            display:inline-block;
+            position: absolute;
+            left: 166px;
+            top: 24px;
+            width: 105px;
+            div {
+              opacity: 1;
+              display:inline-block;
+              position: absolute;
+              opacity: 0;
+              width: 0%;
+              height: 16px;
+              background-color: #750D37;
+              top: 44.5px;
+              left: 0px;
+              animation: slideIn ease-in-out 0.5s;
+              animation-delay: 0.375s;
+              animation-fill-mode: forwards;
+            }
+            div:first-of-type {
+              top: 0px;
+              left: 0px;
+              animation: slideIn ease-in-out 0.5s;
+              animation-delay: 0s;
+              animation-fill-mode: forwards;
+              background-color: #4C5454;
+            }
+            div:last-of-type {
+              top: 89px;
+              left: 0px;
+              animation: slideIn ease-in-out 0.5s;
+              animation-delay: 0.75s;
+              animation-fill-mode: forwards;
+              background-color: #FF715B;
+            }
+          }
+        }
+        h4 {
+          font-weight: 0;
+          font-size: 33px;
+          font-family: simplifica;
+          letter-spacing: 13px;
+          color: #90A4AE;
+        }
+        div.buttons {
+          margin: 0 auto;
+          margin-top: 80px;
+          text-align: center;
+          width: 250px;
+          div.button {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 10px;
+            padding-left: 20px;
+            font-style: simplifica;
+            font-size: 12px;
+            letter-spacing: 10px;
+            text-align: center;
+            transition: background-color 0.5s;
+            cursor: pointer;
+            &:hover {
+              background-color: #FAFAFA;
+            }
+          }
+        }
+      }
+      div.comingsoon {
+        font-family: simplifica;
+        font-size: 12px;
+        letter-spacing: 10px;
+        margin-top: 5px;
+        color: black;
+      }
+    }
+  }
+}
