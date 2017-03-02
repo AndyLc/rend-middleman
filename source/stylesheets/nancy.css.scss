@@ -38,6 +38,19 @@
     height: 700px;
   }
 }
+@keyframes fancyExit {
+  0% {
+    width: 700px;
+    height: 700px;
+  }
+  99% {
+    width: 0px;
+    height: 0px;
+  }
+  100% {
+    z-index: 0;
+  }
+}
 
 div.nancy-html {
   .fadeIn {
@@ -47,6 +60,7 @@ div.nancy-html {
     animation-fill-mode: forwards;
   }
   div.about {
+    display: none;
     z-index: 99;
       width: 0px;
       height: 0px;
@@ -56,12 +70,19 @@ div.nancy-html {
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: #F5F5F5;
-      &.expanded {
-        animation: fancyEntrance ease-in-out 1s;
+      &.hide {
+        display: block;
+        animation: fancyExit ease-in-out 0.5s;
         animation-fill-mode: forwards;
+      }
+      &.expanded {
+        display: block;
+        animation: fancyEntrance ease-in-out 0.5s;
+        animation-fill-mode: forwards;
+        z-index: 99;
         div.about-content {
           animation: fadeIn ease-in-out 1s;
-          animation-delay: 0.7s;
+          animation-delay: 0.4s;
           animation-fill-mode: forwards;
         }
       }
@@ -75,9 +96,40 @@ div.nancy-html {
         font-family: pierSans;
         color: #90A4AE;
         text-align: left;
+        div.buttons {
+          margin: 0 auto;
+          margin-top: 80px;
+          text-align: center;
+          width: 250px;
+          div.button {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 10px;
+            padding-left: 20px;
+            font-style: simplifica;
+            font-size: 12px;
+            letter-spacing: 10px;
+            text-align: center;
+            transition: background-color 0.5s;
+            cursor: pointer;
+            &:hover {
+              background-color: #FAFAFA;
+            }
+          }
+        }
       }
   }
   div.nancy-container {
+    div.decoration {
+      position: fixed;
+      right: -600px;
+      bottom: -600px;
+      z-index: 0;
+      background-color: #EEEEEE;
+      transform: rotate(45deg);
+      width: 1200px;
+      height: 1200px;
+    }
     .fadeIn {
       opacity: 0;
       animation: fadeIn ease-in-out 0.8s;
@@ -98,8 +150,9 @@ div.nancy-html {
         left: 50%;
         transform: translate(-50%, -50%);
         color: #455A64;
+        z-index: 1;
         h2 {
-          height: 105px;
+          height: 58px;
           font-size: 140px;
           letter-spacing: 43px;
           font-family: pierSans;
@@ -111,9 +164,9 @@ div.nancy-html {
           div.elines {
             display:inline-block;
             position: absolute;
-            left: 166px;
+            left: 165px;
             top: 24px;
-            width: 105px;
+            width: 90px;
             div {
               opacity: 1;
               display:inline-block;
@@ -183,10 +236,31 @@ div.nancy-html {
         margin-top: 5px;
         color: black;
         position:absolute;
+        width: 100%;
+        text-align: center;
         top: 0px;
-        left: 50%;
-        transform: translateX(-50%);
       }
+    }
+  }
+}
+
+@media (max-device-width : 736px) {
+  div.about-content {
+    zoom: 0.5;
+    input.email { height: 55px !important };
+  }
+  div.decoration {
+    right: -350px !important;
+    bottom: -350px !important;
+    width: 700px !important;
+    height: 700px !important;
+  }
+  div.intro-logo {
+    h2 {
+      zoom: 0.5;
+    }
+    h4 {
+      zoom: 0.5;
     }
   }
 }
